@@ -1,0 +1,14 @@
+Q:
+Was ist die beliebteste Pizza in Deutschland?
+A: 
+Schoko, Salami, Thunfisch, Margarita
+C:
+Salami
+
+Q:
+Wie viele Produkte bietet Dr. Oetker an?
+A:
+etwa 10, etwa 30, etwa 100, über 1000
+C:
+über 1000
+
