@@ -1,0 +1,180 @@
+#menu-bar {
+  height:5vh;
+  text-align:left;
+  display:flex;
+  justify-content:end;
+  flex-direction:row-reverse;
+}
+
+#highscore {
+  /*width:30vw;*/
+  margin-right:3vw;
+}
+
+#multiplier {
+  /*width:20vw;*/
+  margin-right:3vw;
+}
+
+#QuizBoxes {
+  display:flex;
+  height:25vh;
+  width:90%;
+  flex-direction:row;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.answerbox {
+  display:table;
+  width:50%;
+  /*margin-left:auto;*/
+  /*margin-right:auto;*/
+  /*border-width:1px;*/
+  border-style:solid;
+  text-align:center;
+  height:50%;
+  background-color:white;
+}
+
+#answer1 {
+  border-radius:10px 0 0 0;
+  border-width:2px 1px 1px 2px;
+}
+
+#answer2 {
+  border-radius:0 10px 0 0;
+  border-width:2px 2px 1px 1px;
+}
+
+#answer3 {
+  border-radius:0 0 0 10px;
+  border-width:1px 1px 2px 2px;
+}
+
+#answer4 {
+  border-radius:0 0 10px 0;
+  border-width:1px 2px 2px 1px;
+}
+
+#Quiz-Container {
+  width:100%;
+  display:flex;
+  margin-top:2vh;
+  justify-content:center;
+}
+
+#EichContainer {
+  display:flex;
+  flex-direction:row;
+  height:50vh;
+  margin-top:10vh;
+}
+
+#EichPicture {
+  width:40%;
+  background-image:url("../../assets/img/hiclipart.com.png");
+  background-size:cover;
+}
+
+#EichText {
+  padding-left:1em;
+  padding-top:1em;
+  padding-right:1em;
+  margin:0;
+}
+
+.answertext {
+  vertical-align:middle;
+  display:table-cell;
+  margin-bottom:0;
+}
+
+.speech-bubble {
+  position:relative;
+  background:#f1f1f1;
+  height:100%;
+  border-radius:.4em;
+}
+
+.speech-bubble:after {
+  content:'';
+  position:absolute;
+  left:0;
+  top:50%;
+  width:0;
+  height:0;
+  border:40px solid transparent;
+  border-right-color:#f1f1f1;
+  border-left:0;
+  border-top:0;
+  margin-top:-20px;
+  margin-left:-40px;
+}
+
+#SpeechBubbleContainer {
+  height:45vh;
+  width:40%;
+  margin-left:7vw;
+}
+
+#frage {
+  margin-top:3vh;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  border-style:solid;
+  height:10vh;
+  border-radius:5px;
+  text-align:center;
+  background-color:white;
+  display:table;
+}
+
+.answerbox:hover {
+  /*background-color:rgba(179,145,145,0.6);*/
+  border-width:4px!important;
+}
+
+.eichAnswer {
+  background-color:rgba(179,172,172,0.54);
+  border-radius:5px 5px 5px 5px;
+  padding:1px;
+  margin-left:20px;
+  margin-right:20px;
+  margin-top:10px;
+  width:90%;
+}
+
+.eichAnswerText {
+  margin:0;
+}
+
+#eichAnswerContainer {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+
+.eichAnswer:hover {
+  border-style:solid;
+}
+
+.wrongAnswer {
+  background-color:rgba(255,0,0,0.62);
+}
+
+.rightAnswer {
+  background-color:rgba(0,128,0,0.6);
+}
+
+body {
+  background-color:rgb(204,204,204);
+}
+
+#fragep {
+  display:table-cell;
+  vertical-align:middle;
+  margin-bottom:0;
+}
+
