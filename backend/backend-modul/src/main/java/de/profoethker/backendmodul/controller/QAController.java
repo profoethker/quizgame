@@ -1,7 +1,6 @@
 package de.profoethker.backendmodul.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -125,7 +124,6 @@ public class QAController {
 		answers.add(fetchQa.get().getAnswer4());
 
 		List<Integer> filteredList = new ArrayList<>();
-		Random r = new Random();
 
 		Tip tip = new Tip();
 		Gson gson = new Gson();
