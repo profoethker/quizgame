@@ -159,13 +159,17 @@
 #MadOakPicture {
   width:40%;
   background-image:url("../../assets/img/madOak.png");
-  background-size:cover;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 #HappyOakPicture {
   width:40%;
   background-image:url("../../assets/img/happyOak.png");
-  background-size:cover;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 #eichAnswerContainer {
