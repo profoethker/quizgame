@@ -37,7 +37,9 @@
   border-style:solid;
   text-align:center;
   height:50%;
-  background-color:white;
+  /*background-color:white;*/
+  background-image:url(../../assets/img/answerbox.png);
+  background-size:100% 100%;
 }
 
 #answer1 {
@@ -177,11 +179,15 @@
 }
 
 .wrongAnswer {
-  background-color:rgba(255,0,0,1.0);
+  /*background-color:rgba(255,0,0,1.0);*/
+  background-image:url(../../assets/img/answerbox_wrong.png);
+  background-size:100% 100%;
 }
 
 .rightAnswer {
-  background-color:rgba(0,128,0,1.0);
+  /*background-color:rgba(0,128,0,1.0);*/
+  background-image:url(../../assets/img/answerbox_correct.png);
+  background-size:100% 100%;
 }
 
 body {
