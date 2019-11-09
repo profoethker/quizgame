@@ -42,7 +42,7 @@ public class QAController {
 	@GetMapping("/api/qa")
 	@CrossOrigin
 	public String getQuestionAndAnswer() {
-		System.out.println("Inside qa");
+		logger.info("Inside qa");
 		List<QA> qaList = qaDao.findAll();
 
 		if (!qaList.isEmpty()) {
