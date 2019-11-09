@@ -12,3 +12,23 @@ etwa 10, etwa 30, etwa 100, über 1000
 C:
 über 1000
 
+Q:
+Welche Farbe sticht bei der Verpackung des Kraftfutters "Müsli-Snack" am meisten hervor?
+A:
+Gelb, Grün, schwarz, rot
+C:
+Grün
+
+Q:
+Welcher Finger zeigt beim Flutschfinger von Dr. Oetker nach oben?
+A:
+Ringfinger, kleiner Finger, Zeigefinger, Mittelfinger
+C:
+Zeigefinger
+
+Q:
+Welche Pizzasorte von Pizza Ristorante existiert nicht?
+A:
+Pasta, Salame Mozzarella Pesto, Calabrese Salame, Diablo
+C:
+Diablo
