@@ -8,6 +8,7 @@ $( document ).ready(function() {
     
 });
 
+var currentPersonalQuestionId = -1;
 var currentQuestionId = -1;
 var alreadyTipped = false;
 var ip_address = '192.168.178.43:7000'
@@ -36,10 +37,45 @@ function loadRandomQuestion(){
         $( "#eichAnswerContainer" ).html("<div id='tipp' class='eichAnswer'><p class='eichAnswerText'>Ich brauche einen Tipp</p></div>");
           
         $( "#tipp" ).click(function() { 
-            eichTippLoader();    
+            personalQuestionLoader();    
         });
         $( "#MadOakPicture" ).attr("id", "EichPicture");
         $( "#HappyOakPicture").attr("id", "EichPicture");
+      }
+    });
+}
+
+function personalQuestionLoader(){
+    $.ajax({
+      type: 'GET',
+      url: "http://"+ ip_address + "/api/p/generate/",
+      async: true,
+      headers: {"Access-Control-Allow-Origin": "*"},
+      dataType: 'json',
+      success: function (data) {
+        $( "#EichText" ).html("Es wäre nett, wenn du mir kurz eine Frage beantwortest: </br>" + data.question);
+        $( "#eichAnswerContainer" ).html("<div id='p1' class='eichAnswer'><p class='eichAnswerText'>"+data.answer1+"</p></div><div id='p2' class='eichAnswer'><p class='eichAnswerText'>"+data.answer2+"</p></div><div id='p3' class='eichAnswer'><p class='eichAnswerText'>"+data.answer3+"</p></div><div id='p4' class='eichAnswer'><p class='eichAnswerText'>"+data.answer4+"</p></div>");
+        currentPersonalQuestionId = data.id
+
+        $( "#p1" ).click(function() { uploadPersonalData( 1);});
+        $( "#p2" ).click(function() { uploadPersonalData( 2);});
+        $( "#p3" ).click(function() { uploadPersonalData( 3);});
+        $( "#p4" ).click(function() { uploadPersonalData( 4);});
+          
+      }
+    });    
+}
+
+function uploadPersonalData( answerChoosen){
+    $.ajax({
+      type: 'POST',
+      url: "http://"+ ip_address + "/api/p/store/",
+      data: JSON.stringify({ "questionID":  currentPersonalQuestionId ,"personaSelectionID": answerChoosen }), 
+      async: true,
+      contentType: "application/json", 
+      dataType: 'json',
+      success: function (data) {
+          eichTippLoader();
       }
     });
 }
