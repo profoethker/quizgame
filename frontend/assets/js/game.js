@@ -50,6 +50,7 @@ function eichTippLoader(){
           if(alreadyTipped) return;
           alreadyTipped = true;
           if(data.type == "50/50"){
+
              $( "#EichText" ).html("Ich habe dir die Anzhal der möglich Antworten halbiert. Ich hoffe es hilft dir.");
              $( "#aText" + data.wrong1 ).html( "" );
              $( "#aText" + data.wrong2 ).html( "" );
@@ -57,6 +58,7 @@ function eichTippLoader(){
              $( "#EichText" ).html(data.tip);
           }if(data.type == "skip"){
              $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir eine neue Frage.");
+
               
              currentQuestionId = -1;
              
