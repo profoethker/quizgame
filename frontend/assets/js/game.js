@@ -52,6 +52,8 @@ function sendAnswer(questionID, answerID){
 }
 
 function removeWrongRightIndicator(){
-    $( "#answer"+answerID ).removeClass("rightAnswer");
-    $( "#answer"+answerID ).removeClass("wrongAnswer");
+    for( i = 1 ; i < 5 ; i ++){
+    $( "#answer"+i ).removeClass("rightAnswer");
+    $( "#answer"+i ).removeClass("wrongAnswer");
+    }
 }
