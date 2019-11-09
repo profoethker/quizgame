@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 @Repository
-public interface QADao extends JpaRepository<QA, Long> {
+public interface QADao extends JpaRepository<QA, Integer> {
 
 	@Modifying
 	QA save(QA data);
