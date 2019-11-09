@@ -141,7 +141,7 @@
 }
 
 .eichAnswer {
-  background-color:rgba(179,172,172,0.54);
+  background-color:rgba(179,172,172,1.0);
   border-radius:5px 5px 5px 5px;
   padding:1px;
   margin-left:20px;
@@ -165,20 +165,24 @@
 }
 
 .wrongAnswer {
-  background-color:rgba(255,0,0,0.62);
+  background-color:rgba(255,0,0,1.0);
 }
 
 .rightAnswer {
-  background-color:rgba(0,128,0,0.6);
+  background-color:rgba(0,128,0,1.0);
 }
 
 body {
-  background-color:rgb(204,204,204);
+  background-image:url(../../assets/img/background.png);
+  background-repeat:repeat;
 }
 
 #fragep {
   display:table-cell;
   vertical-align:middle;
   margin-bottom:0;
+}
+
+#answer1 {
 }
 
