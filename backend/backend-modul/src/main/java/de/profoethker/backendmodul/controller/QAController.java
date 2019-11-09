@@ -93,18 +93,21 @@ public class QAController {
 
 		Optional<QA> qaList = qaDao.findById(check.getQuestionID());
 
+		Gson gson = new Gson();
+		QA qa = new QA();
 		if (qaList.isPresent()) {
 			if (qaList.get().getCorrect() == check.getAnswerID()) {
 				System.out.println("Correct");
-				Gson gson = new Gson();
-				QA qa = new QA();
 				qa.setInfo(qaList.get().getInfo());
 				qa.setCorrect(check.getAnswerID());
 				String json = gson.toJson(qa);
-				return String.valueOf(json);
+				return json;
 			}
 		}
-		return qaList.get().getCorrect().toString();
+		qa.setInfo(qaList.get().getInfo());
+		qa.setCorrect(qaList.get().getCorrect());
+		String json = gson.toJson(qa);
+		return json;
 	}
 
 	@PostMapping("/api/tip")
