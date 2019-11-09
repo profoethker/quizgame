@@ -12,6 +12,10 @@ var currentPersonalQuestionId = -1;
 var currentQuestionId = -1;
 var alreadyTipped = false;
 var ip_address = '192.168.178.43:7000'
+//var ip_address = 'localhost:7000'
+var highscore = 0
+var multiplier = 1
+var correct_streak = 0
 
 function loadRandomQuestion(){
     $.ajax({
@@ -131,13 +135,21 @@ function sendAnswer(questionID, answerID){
            $( "#answer"+answerID ).addClass("rightAnswer");
            $( "#EichText" ).html("Richtig! </br> "+ data.info);
            $( "#EichPicture").attr("id", "HappyOakPicture");
+           highscore = highscore + (100 * multiplier);
+           correct_streak++;
+           if (correct_streak >= 2){
+               multiplier = multiplier + 0.5;
+               correct_streak = 0;
+           }
         }else{
            $( "#answer"+answerID ).addClass("wrongAnswer");
            $( "#answer"+data.correct ).addClass("rightAnswer");
            $( "#EichText" ).html("Leider Falsch! </br> "+ data.info);
            $( "#EichPicture" ).attr("id", "MadOakPicture");
+           multiplier = 1;
+           correct_streak = 0;
         }
-        
+        updateScore();
         //Sprechblase mit erklärung anzeigen
         $( "#eichAnswerContainer" ).html("<div id='nextQuestion' class='eichAnswer'><p class='eichAnswerText'>OK</p></div>");
           
@@ -154,4 +166,9 @@ function removeWrongRightIndicator(){
         $( "#answer"+i ).removeClass("rightAnswer");
         $( "#answer"+i ).removeClass("wrongAnswer");
     }
+}
+
+function updateScore(){
+    $( "#multiplier_text").html('<p>Multiplier: '+ multiplier + 'x</p>');
+    $( "#highscore_text").html("<p>Highscore: "+ highscore+ '</p>');
 }

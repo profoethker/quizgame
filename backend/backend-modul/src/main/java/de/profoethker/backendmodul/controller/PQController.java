@@ -57,13 +57,16 @@ public class PQController {
 
 	@PostMapping("/api/p/store")
 	@CrossOrigin
-	public void storePQ(@RequestBody CheckPA checkPA) {
+	public String storePQ(@RequestBody CheckPA checkPA) {
 		if (checkPA.getPersonaSelectionID() != null && checkPA.getQuestionID() != null) {
 
 			PQ toStore = pqDao.getOne(checkPA.getQuestionID());
 			toStore.setPersona(checkPA.getPersonaSelectionID());
 			pqDao.save(toStore);
 			logger.info("Success created!");
+			return "true";
+		} else {
+			return null;
 		}
 
 	}
