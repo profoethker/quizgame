@@ -9,6 +9,7 @@ $( document ).ready(function() {
 });
 
 var currentQuestionId = -1;
+var alreadyTipped = false;
 
 function loadRandomQuestion(){
     $.ajax({
@@ -24,6 +25,7 @@ function loadRandomQuestion(){
         $( "#aText3" ).html( data.answer3 );
         $( "#aText4" ).html( data.answer4 );
         currentQuestionId = data.id
+        alreadyTipped = false;
           
         $( "#EichText" ).html("Wenn die Frage zu schwer ist, kannst du mich um einen Tipp bitten.");
         $( "#eichAnswerContainer" ).html("<div id='tipp' class='eichAnswer'><p class='eichAnswerText'>Ich brauche einen Tipp</p></div>");
@@ -39,19 +41,27 @@ function eichTippLoader(){
     $.ajax({
       type: 'POST',
       url: "http://192.168.178.43:7000/api/tip/",
-      data: questionID,
+      data: JSON.stringify({currentQuestionId}),
       async: true,
       contentType: "application/json", 
       dataType: 'json',
       success: function (data) {
           $( "#eichAnswerContainer" ).html(" ");
+          if(alreadyTipped) return;
+          alreadyTipped = true;
           if(data.type == "50/50"){
              $( "#EichText" ).html("Ich habe dir die Anzhal der möglich Antworten halbiert. Ich hoffe es hilft dir.");
+             $( "#aText" + data.wrong1 ).html( "" );
+             $( "#aText" + data.wrong2 ).html( "" );
           }if(data.type == "tip"){
              $( "#EichText" ).html(data.tip);
           }if(data.type == "skip"){
-             $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir die möglichkeit, eine neue Frage zu beantworten.");
+             $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir eine neue Frage.");
               
+             currentQuestionId = -1;
+             
+             $( "#answer"+data.correct ).addClass("rightAnswer");
+
              $( "#eichAnswerContainer" ).html("<div id='nextQuestion' class='eichAnswer'><p class='eichAnswerText'>Zur nächsten Frage</p></div>");
               
              $( "#nextQuestion" ).click(function() { 
@@ -60,10 +70,6 @@ function eichTippLoader(){
              });  
           }
           
-          
-          
-          $( "#EichText" ).html("Wenn die Frage zu schwer ist, kannst du mich um einen Tipp bitten.");
-          $( "#eichAnswerContainer" ).html("<div id='tipp' class='eichAnswer'><p class='eichAnswerText'>Ich brauche einen Tipp</p></div>");
       }
     });
 }
