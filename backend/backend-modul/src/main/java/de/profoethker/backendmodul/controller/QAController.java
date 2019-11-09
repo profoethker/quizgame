@@ -126,8 +126,6 @@ public class QAController {
 		answers.add(fetchQa.get().getAnswer3());
 		answers.add(fetchQa.get().getAnswer4());
 
-		List<Integer> filteredList = new ArrayList<>();
-
 		Tip tip = new Tip();
 		Gson gson = new Gson();
 
@@ -136,23 +134,11 @@ public class QAController {
 			// 10%
 			if (chance <= 0.10f) {
 				logger.info("50/50");
-				// Correct answer for 50%
-				// filteredList.add(fetchQa.get().getCorrect());
-
 				List<Integer> wrongAnswers = new ArrayList<>();
 				for (int i = 1; i <= 4; i++) {
 					if (i != fetchQa.get().getCorrect()) {
 						wrongAnswers.add(i);
 					}
-				}
-				System.out.println("Wrong ANswers!");
-				for (Integer a : wrongAnswers) {
-					System.out.println(a);
-				}
-
-				System.out.println("Filered");
-				for (Integer b : filteredList) {
-					System.out.println(b);
 				}
 
 				tip.setWrong1(wrongAnswers.get(0));
