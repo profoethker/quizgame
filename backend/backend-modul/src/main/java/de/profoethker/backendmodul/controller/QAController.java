@@ -88,10 +88,26 @@ public class QAController {
 		if (qaList.isPresent()) {
 			if (qaList.get().getCorrect() == check.getAnswerID()) {
 				System.out.println("Correct");
-				return String.valueOf(check.getAnswerID());
+				Gson gson = new Gson();
+				QA qa = new QA();
+				qa.setInfo(qaList.get().getInfo());
+				qa.setCorrect(check.getAnswerID());
+				String json = gson.toJson(qa);
+				return String.valueOf(json);
 			}
 		}
 		return qaList.get().getCorrect().toString();
 	}
+	
+	@PostMapping("/api/tip")
+	@CrossOrigin
+	public String generateTip(@RequestBody Integer answerID) {
+		//"50/50"- >Json ZWEI % 10 
+		// Tip -> STRING % 70
+		// SkipQuestion NULL % 10
+		// Mult higher -> zAHL % 10
+		return null;
+	}
+	
 
 }
