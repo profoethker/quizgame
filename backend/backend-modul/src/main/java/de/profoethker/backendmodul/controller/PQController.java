@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -30,7 +30,7 @@ public class PQController {
 		this.pqDao = pq;
 	}
 
-	@GetMapping("/api/p/generate")
+	@RequestMapping(value = "/api/p/generate", produces = "application/json")
 	@CrossOrigin
 	public String generateRandomPersonalQuestion() {
 		logger.info("Fetching data and generating random personal question");
@@ -40,6 +40,7 @@ public class PQController {
 			Gson gson = new Gson();
 			PQ randomPQ = getRandomPQ(pqList);
 			PQ pq = new PQ();
+			pq.setId(randomPQ.getId());
 			pq.setQuestion(randomPQ.getQuestion());
 			pq.setAnswer1(randomPQ.getAnswer1());
 			pq.setAnswer2(randomPQ.getAnswer2());
@@ -47,6 +48,7 @@ public class PQController {
 			pq.setAnswer4(randomPQ.getAnswer4());
 
 			String json = gson.toJson(pq);
+			logger.info(json);
 			return json;
 		} else {
 			return null;
@@ -56,9 +58,13 @@ public class PQController {
 	@PostMapping("/api/p/store")
 	@CrossOrigin
 	public void storePQ(@RequestBody CheckPA checkPA) {
-		PQ toStore = pqDao.getOne(checkPA.getQuestionID());
-		toStore.setPersona(checkPA.getPersonaSelectionID());
-		pqDao.save(toStore);
+		if (checkPA.getPersonaSelectionID() != null && checkPA.getQuestionID() != null) {
+
+			PQ toStore = pqDao.getOne(checkPA.getQuestionID());
+			toStore.setPersona(checkPA.getPersonaSelectionID());
+			pqDao.save(toStore);
+			logger.info("Success created!");
+		}
 
 	}
 
