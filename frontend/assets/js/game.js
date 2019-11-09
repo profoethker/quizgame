@@ -80,7 +80,7 @@ function sendAnswer(questionID, answerID){
     
     $.ajax({
       type: 'POST',
-      url: "http://192.168.178.43:7000/api/sendAnswer/",
+      url: "http://" + ip_address + "/api/sendAnswer/",
       data: JSON.stringify({ "questionID":  questionID ,"answerID": answerID }),
       async: true,
       contentType: "application/json", 
