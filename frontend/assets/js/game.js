@@ -56,7 +56,7 @@ function eichTippLoader(){
               if(data.tip.length == 0) $( "#EichText" ).html("Die Aufgabe ist so einfach, hier bekommst du noch keinen Tip.");
               else $( "#EichText" ).html(data.tip);
           }if(data.type == "50/50"){
-             $( "#EichText" ).html("Ich habe dir die Anzhal der möglich Antworten halbiert. Ich hoffe es hilft dir.");
+             $( "#EichText" ).html("Ich habe dir die Anzahl der möglich Antworten halbiert. Ich hoffe es hilft dir.");
              $( "#aText" + data.wrong1 ).html( "" );
              $( "#aText" + data.wrong2 ).html( "" );
           }if(data.type == "skip"){

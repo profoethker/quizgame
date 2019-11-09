@@ -154,6 +154,18 @@
   margin:0;
 }
 
+#MadOakPicture {
+  width:40%;
+  background-image:url("../../assets/img/madOak.png");
+  background-size:cover;
+}
+
+#HappyOakPicture {
+  width:40%;
+  background-image:url("../../assets/img/happyOak.png");
+  background-size:cover;
+}
+
 #eichAnswerContainer {
   display:flex;
   flex-direction:row;
