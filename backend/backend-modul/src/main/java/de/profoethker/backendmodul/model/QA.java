@@ -15,7 +15,7 @@ public class QA {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "hibernate_sequence")
-	private int id;
+	private Integer id;
 
 	private String question;
 	private String answer1;
