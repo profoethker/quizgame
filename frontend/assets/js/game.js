@@ -46,11 +46,11 @@ function eichTippLoader(){
       success: function (data) {
           $( "#eichAnswerContainer" ).html(" ");
           if(data.type == "50/50"){
-             $( "#EichText" ).html("Ich habe dir die Anzhal der möglich Antworten halbiert. Ich hoffe es hilft dir.");
+             $( "#EichText" ).html("Ich habe dir die Anzahl der möglich Antworten halbiert. Ich hoffe es hilft dir.");
           }if(data.type == "tip"){
              $( "#EichText" ).html(data.tip);
           }if(data.type == "skip"){
-             $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir die möglichkeit, eine neue Frage zu beantworten.");
+             $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir die Möglichkeit, eine neue Frage zu beantworten.");
               
              $( "#eichAnswerContainer" ).html("<div id='nextQuestion' class='eichAnswer'><p class='eichAnswerText'>Zur nächsten Frage</p></div>");
               
