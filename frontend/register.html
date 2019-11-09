@@ -17,36 +17,66 @@ img {
   </head>
   
   <body>
-    <div class="container"> <!-- -->
-      <img src = "assets/img/hiclipart.com.png" alt="Pineapple" style="width:170px;height:220px;margin-left:15px;">
-      <h1>Herzlich Wilkommen in der Welt des Quizzes! Mein Name ist Professor Oetker. Bevor du dich am Highscore beteiligen kannst, möchte ich dich etwas näher kennenlernen.</h1>
-      <br>
-      <form>
-	<h1>Bitte gib deinen Namen ein.</h1>
-	<div class="form-group">
-	  <label for="exampleInputEmail1">User-Name</label>
-	  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Namen eingeben">
-	  <h1>Bitte gib deine E-Mail an</h1>
-	  <label for="exampleInputEmail1">E-mail</label>
-	  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-Mail eingeben">
-	  <!--<small id="emailHelp" class="form-text text-muted">Ihre E-Mail wird sicher in meinem Meisterball verwahrt.</small> -->
-	  <h1>Bitte wähle ein Passwort und bestätige es anschließend.</h1>
+	<div class="container"> <!-- -->
+		
+		<div class="py-5 text-center">
+			<h2>Anmeldung</h2>
+			<p class="lead text-left">
+				Herzlich Wilkommen in der Welt des Quizzes! Mein Name ist Professor Oetker. Bevor du dich am Highscore
+				beteiligen kannst, möchte ich dich etwas näher kennenlernen.</p>
+		  </div>
+
+	 	<div class="row">
+		  <div class="col-md-6">
+			<div class="form-group">
+			  <label for="first">User-Name</label>
+			  <input required type="text" class="form-control" placeholder="Namen eingeben" id="username">
+			</div>
+		  </div>
+
+	
+		  <div class="col-md-6">
+			<div class="form-group">
+			  <label for="last">E-Mail</label>
+			  <input required type="email" class="form-control" placeholder="E-mail eingeben" id="email">
+			</div>
+		  </div>
+
+		</div>
+	
+	
+		<div class="row">
+		  <div class="col-md-6">
+			<div class="form-group">
+			  <label for="company">Passwort</label>
+			  <input required type="password" class="form-control" placeholder="Passwort eingeben" id="pass">
+			</div>
+		  </div>
+
+	
+		  <div class="col-md-6">
+			<div class="form-group">
+			  <label for="phone">Passwort bestätigen</label>
+			  <input required type="password" class="form-control" id="pass-confirm" placeholder="Passwort bestätigen">
+			</div>
+		  </div>
+
+		</div>
+		<div class="d-flex justify-content-sm-center">
+
+		<button onclick="bars()" class="btn btn-primary text-center" id="btn-register">Abschicken</button>
+	</div>  
+	<div class="d-flex justify-content-sm-center">
+			<img src="assets/img/loading.gif" id="load">
 	</div>
-	<div class="form-group">
-	  <label for="exampleInputPassword1">Passwort</label>
-	  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Passwort eingeben">
-	  <label for="exampleInputPassword1">Passwort bestätigen</label>
-	  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Passwort eingeben">
+	<div class="d-flex justify-content-sm-center">
+		<span id= "result-icon" class="badge badge-success">Success</span>
 	</div>
-	<div class="form-group form-check">
-	  <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
-	  <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
-	</div>
-	<button type="submit" class="btn btn-primary">Anmelden</button>
-      </form>
+	
     </div>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/register.js"></script>
   </body>
   
 </html>
