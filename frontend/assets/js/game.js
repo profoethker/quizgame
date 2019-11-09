@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 var currentQuestionId = -1;
 var alreadyTipped = false;
-var ip_address = 'localhost:7000'
+var ip_address = '192.168.178.43:7000'
 
 function loadRandomQuestion(){
     $.ajax({
