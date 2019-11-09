@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,7 +14,7 @@ public class QA {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "hibernate_sequence")
-	private int id;
+	private Integer id;
 
 	private String question;
 	private String answer1;
@@ -23,6 +22,24 @@ public class QA {
 	private String answer3;
 	private String answer4;
 	private Integer correct;
+	private String info;
+	private String hint;
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public String getHint() {
+		return hint;
+	}
+
+	public void setHint(String hint) {
+		this.hint = hint;
+	}
 
 	public Integer getId() {
 		return id;
