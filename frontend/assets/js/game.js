@@ -8,9 +8,14 @@ $( document ).ready(function() {
     
 });
 
+var currentPersonalQuestionId = -1;
 var currentQuestionId = -1;
 var alreadyTipped = false;
 var ip_address = '192.168.178.43:7000'
+//var ip_address = 'localhost:7000'
+var highscore = 0
+var multiplier = 1
+var correct_streak = 0
 
 function loadRandomQuestion(){
     $.ajax({
@@ -32,10 +37,45 @@ function loadRandomQuestion(){
         $( "#eichAnswerContainer" ).html("<div id='tipp' class='eichAnswer'><p class='eichAnswerText'>Ich brauche einen Tipp</p></div>");
           
         $( "#tipp" ).click(function() { 
-            eichTippLoader();    
+            personalQuestionLoader();    
         });
         $( "#MadOakPicture" ).attr("id", "EichPicture");
         $( "#HappyOakPicture").attr("id", "EichPicture");
+      }
+    });
+}
+
+function personalQuestionLoader(){
+    $.ajax({
+      type: 'GET',
+      url: "http://"+ ip_address + "/api/p/generate/",
+      async: true,
+      headers: {"Access-Control-Allow-Origin": "*"},
+      dataType: 'json',
+      success: function (data) {
+        $( "#EichText" ).html("Es wäre nett, wenn du mir kurz eine Frage beantwortest: </br>" + data.question);
+        $( "#eichAnswerContainer" ).html("<div id='p1' class='eichAnswer'><p class='eichAnswerText'>"+data.answer1+"</p></div><div id='p2' class='eichAnswer'><p class='eichAnswerText'>"+data.answer2+"</p></div><div id='p3' class='eichAnswer'><p class='eichAnswerText'>"+data.answer3+"</p></div><div id='p4' class='eichAnswer'><p class='eichAnswerText'>"+data.answer4+"</p></div>");
+        currentPersonalQuestionId = data.id
+
+        $( "#p1" ).click(function() { uploadPersonalData( 1);});
+        $( "#p2" ).click(function() { uploadPersonalData( 2);});
+        $( "#p3" ).click(function() { uploadPersonalData( 3);});
+        $( "#p4" ).click(function() { uploadPersonalData( 4);});
+          
+      }
+    });    
+}
+
+function uploadPersonalData( answerChoosen){
+    $.ajax({
+      type: 'POST',
+      url: "http://"+ ip_address + "/api/p/store/",
+      data: JSON.stringify({ "questionID":  currentPersonalQuestionId ,"personaSelectionID": answerChoosen }), 
+      async: true,
+      contentType: "application/json", 
+      dataType: 'json',
+      success: function (data) {
+          eichTippLoader();
       }
     });
 }
@@ -95,13 +135,21 @@ function sendAnswer(questionID, answerID){
            $( "#answer"+answerID ).addClass("rightAnswer");
            $( "#EichText" ).html("Richtig! </br> "+ data.info);
            $( "#EichPicture").attr("id", "HappyOakPicture");
+           highscore = highscore + (100 * multiplier);
+           correct_streak++;
+           if (correct_streak >= 2){
+               multiplier = multiplier + 0.5;
+               correct_streak = 0;
+           }
         }else{
            $( "#answer"+answerID ).addClass("wrongAnswer");
            $( "#answer"+data.correct ).addClass("rightAnswer");
            $( "#EichText" ).html("Leider Falsch! </br> "+ data.info);
            $( "#EichPicture" ).attr("id", "MadOakPicture");
+           multiplier = 1;
+           correct_streak = 0;
         }
-        
+        updateScore();
         //Sprechblase mit erklärung anzeigen
         $( "#eichAnswerContainer" ).html("<div id='nextQuestion' class='eichAnswer'><p class='eichAnswerText'>OK</p></div>");
           
@@ -118,4 +166,9 @@ function removeWrongRightIndicator(){
         $( "#answer"+i ).removeClass("rightAnswer");
         $( "#answer"+i ).removeClass("wrongAnswer");
     }
+}
+
+function updateScore(){
+    $( "#multiplier_text").html('<p>Multiplier: '+ multiplier + 'x</p>');
+    $( "#highscore_text").html("<p>Highscore: "+ highscore+ '</p>');
 }
