@@ -20,7 +20,7 @@ public class DBConfig {
 	public DataSource datasource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-		dataSourceBuilder.url("jdbc:sqlite:quiz.db");
+		dataSourceBuilder.url("jdbc:sqlite:quiz.sqlite");
 		return dataSourceBuilder.build();
 	}
 

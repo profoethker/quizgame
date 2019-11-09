@@ -1,5 +1,8 @@
 package de.profoethker.backendmodul.controller;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 
 import de.profoethker.backendmodul.dao.QADao;
+import de.profoethker.backendmodul.model.CheckQA;
 import de.profoethker.backendmodul.model.QA;
 
 @RestController
@@ -31,41 +35,79 @@ public class QAController {
 	@CrossOrigin
 	public String getQuestionAndAnswer() {
 		System.out.println("Inside qa");
-		// List<QA> qaList = qaDao.findall();
-		/*
-		 * if (!qaList.isEmpty()) { for (QA value : qaList) { System.out.println(value);
-		 * } } else { System.out.println("No data in DB!"); }
-		 */
+		List<QA> qaList = qaDao.findAll();
+
+		if (!qaList.isEmpty()) {
+			QA randomQa = getRandomQa(qaList);
+			System.out.println(randomQa.getQuestion());
+		} else {
+			System.out.println("No data in DB!");
+		}
+
 		return "Etwas";
 	}
 
-	@RequestMapping(value = "/api/randomQuestion", produces="application/json")
+	public QA getRandomQa(List<QA> all) {
+		Random r = new Random();
+		QA randomQa = all.get(r.nextInt(all.size()));
+		return randomQa;
+	}
+
+	@RequestMapping(value = "/api/randomQuestion", produces = "application/json")
 	@CrossOrigin
 	public String getRandomQuestionAndAnswer() {
 		System.out.println("Inside getRandomQuestion");
 		Gson gson = new Gson();
+		List<QA> qaList = qaDao.findAll();
+		if (!qaList.isEmpty()) {
+			QA randomQa = getRandomQa(qaList);
 
-		QA qa = new QA();
-		qa.setId(1);
-		qa.setAnswer1("eine Katze");
-		qa.setAnswer2("Pikachu");
-		qa.setAnswer3("Hund");
-		qa.setAnswer4("Eich");
-		qa.setQuestion("Wer bin ich?");
-		String json = gson.toJson(qa);
+			QA qa = new QA();
+			qa.setId(randomQa.getId());
+			qa.setAnswer1(randomQa.getAnswer1());
+			qa.setAnswer2(randomQa.getAnswer2());
+			qa.setAnswer3(randomQa.getAnswer3());
+			qa.setAnswer4(randomQa.getAnswer4());
+			qa.setQuestion(randomQa.getQuestion());
+			String json = gson.toJson(qa);
 
-		return json;
+			return json;
+		} else {
+			return null;
+		}
 	}
 
 	@PostMapping("/api/sendAnswer")
-	public String sendCorrect(@RequestBody QA qa) {
+	@CrossOrigin
+	public String sendCorrect(@RequestBody CheckQA check) {
 		System.out.println("Inside getRandomQuestion");
-		// List<QA> qaList = qaDao.findall();
-		/*
-		 * if (!qaList.isEmpty()) { for (QA value : qaList) { System.out.println(value);
-		 * } } else { System.out.println("No data in DB!"); }
-		 */
-		return "1";
+		System.out.println(check.getAnswerID());
+
+		Optional<QA> qaList = qaDao.findById(check.getQuestionID());
+
+		if (qaList.isPresent()) {
+			if (qaList.get().getCorrect() == check.getAnswerID()) {
+				System.out.println("Correct");
+				Gson gson = new Gson();
+				QA qa = new QA();
+				qa.setInfo(qaList.get().getInfo());
+				qa.setCorrect(check.getAnswerID());
+				String json = gson.toJson(qa);
+				return String.valueOf(json);
+			}
+		}
+		return qaList.get().getCorrect().toString();
 	}
+	
+	@PostMapping("/api/tip")
+	@CrossOrigin
+	public String generateTip(@RequestBody Integer answerID) {
+		//"50/50"- >Json ZWEI % 10 
+		// Tip -> STRING % 70
+		// SkipQuestion NULL % 10
+		// Mult higher -> zAHL % 10
+		return null;
+	}
+	
 
 }
