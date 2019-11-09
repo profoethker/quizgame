@@ -1,34 +1,70 @@
-Q:
-Was ist die beliebteste Pizza in Deutschland?
-A: 
-Schoko, Salami, Thunfisch, Margarita
-C:
-Salami
-
-Q:
-Wie viele Produkte bietet Dr. Oetker an?
+Q(id 1):
+Was isst du lieber?
 A:
-etwa 10, etwa 30, etwa 100, über 1000
-C:
-über 1000
+Omas Hühnerbrühe, Indische Curry, Geschnezeltes, Tiefkühl-Pizza
+Interpretation:
+Frank, Angela, Daniela, Robert
 
-Q:
-Welche Farbe sticht bei der Verpackung des Kraftfutters "Müsli-Snack" am meisten hervor?
+Q(id 2):
+Wieviel Zeit nimmst du zum Kochen in Anspruch?
 A:
-Gelb, Grün, schwarz, rot
-C:
-Grün
+Wenn's sein muss den ganzen Tag, Ich esse lieber in Restaurants, Es kommt auf das Gericht an, Meine Mutter kocht für uns
 
-Q:
-Welcher Finger zeigt beim Flutschfinger von Dr. Oetker nach oben?
-A:
-Ringfinger, kleiner Finger, Zeigefinger, Mittelfinger
-C:
-Zeigefinger
+Interpretation:
+Frank, Angela, Daniela, Robert
 
-Q:
-Welche Pizzasorte von Pizza Ristorante existiert nicht?
+Q(id 3):
+Hast du in den letzten 2 Wochen etwas gekocht?
 A:
-Pasta, Salame Mozzarella Pesto, Calabrese Salame, Diablo
-C:
-Diablo
+Ja, Nein
+Interpretation:
+Frank/Daniela, Angela/Robert
+
+Q(id 4):
+Welche Art von Dr. Oetker-Produkt kaufst du in der Regel eher?
+A:
+Creme Fraiche, Vitalis, Pudding, Tiefkühl-Pizza
+Interpretation:
+Frank, Angela, Daniela, Robert
+
+Q(id 5):
+Welche Zutat würdest du auf jedenfall in eine Suppe einwerfen?
+A:
+Hähnchenkeulen, Möhren, Zwiebeln, Salz
+Interpretation:
+Frank, Angela, Daniela, Robert
+
+Q(id 6):
+Wie oft benutzt du bei der Zubereitung eines Gerichts ein Messer?
+A:
+Immer, Ich versuche es ohne, Immer wenn es erforderlich ist, Was ist ein Messer?
+Interpretation:
+Frank, Angela, Daniela, Robert
+
+Q(id 7):
+Wenn du ohne Grund in einen Supermarkt gehst, welche der folgenden Produkte würdest du zuerst kaufen?
+A:
+Pfeffer, Weintrauben, Putenwurst, Ravioli
+Interpretation:
+Frank, Angela, Daniela, Robert
+
+Q(id 8):
+Welche Flüssigkeit nimmst du in der Regel ein?
+A:
+Zitronen-Soda, Wasser, 
+Interpretation:
+Frank, Angela, Daniela, Robert
+
+Q(id 9):
+Kochst du gerne?
+A:
+Ja, Nein, Kommt auf die Stimmung an
+Interpretation:
+Frank/Daniela, Angela/Robert, Angela/Daniela
+
+Q(id 10):
+In Welche Richtung geht deine Lieblingsspeise?
+A:
+selbstgemachtes warmes Gericht, tiefgekühltes Gericht, selbstgemachtes kaltes Gericht, kalte Speise
+Interpretation:
+Frank, Angela, Daniela, Robert
