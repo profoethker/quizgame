@@ -136,7 +136,7 @@ public class QAController {
 			if (chance <= 0.10f) {
 				logger.info("50/50");
 				// Correct answer for 50%
-				filteredList.add(fetchQa.get().getCorrect());
+				// filteredList.add(fetchQa.get().getCorrect());
 
 				List<Integer> wrongAnswers = new ArrayList<>();
 				for (int i = 1; i <= 4; i++) {
@@ -144,14 +144,19 @@ public class QAController {
 						wrongAnswers.add(i);
 					}
 				}
-				for(Integer a: wrongAnswers) {
+				System.out.println("Wrong ANswers!");
+				for (Integer a : wrongAnswers) {
 					System.out.println(a);
 				}
-				Integer wrongAnswer = wrongAnswers.get(r.nextInt(wrongAnswers.size()));
-				filteredList.add(wrongAnswer);
 
-				tip.setWrong1(filteredList.get(0));
-				tip.setWrong2(filteredList.get(1));
+				System.out.println("Filered");
+				for (Integer b : filteredList) {
+					System.out.println(b);
+				}
+
+				tip.setWrong1(wrongAnswers.get(0));
+				tip.setWrong2(wrongAnswers.get(random.nextInt(2) + 1));
+
 				tip.setType("50/50");
 				String json = gson.toJson(tip);
 				return json;
@@ -178,6 +183,7 @@ public class QAController {
 			// SkipQuestion "skipt" % 10
 		}
 		return null;
+
 	}
 
 	public boolean isCorrectAnswer(Integer answerID, Integer answerNum) {
