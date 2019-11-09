@@ -89,12 +89,12 @@ function sendAnswer(questionID, answerID){
           
         if(data.correct == answerID){
            $( "#answer"+answerID ).addClass("rightAnswer");
-           $( "#EichText" ).html("Nicht schlecht :) </br> "+ data.info);
+           $( "#EichText" ).html("Richtig! </br> "+ data.info);
 
         }else{
            $( "#answer"+answerID ).addClass("wrongAnswer");
            $( "#answer"+data.correct ).addClass("rightAnswer");
-           $( "#EichText" ).html("Das stimmt leider NICHT! </br> "+ data.info);
+           $( "#EichText" ).html("Leider Falsch! </br> "+ data.info);
 
         }
         
