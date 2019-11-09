@@ -8,7 +8,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "personal_q")
+@Table(name = "personalq")
 @SequenceGenerator(name = "hibernate_sequence")
 public class PQ {
 
