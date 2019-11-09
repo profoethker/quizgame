@@ -77,6 +77,18 @@
   background-size:cover;
 }
 
+#MadOakPicture {
+  width:40%;
+  background-image:url("../../assets/img/madOak.png");
+  background-size:cover;
+}
+
+#HappyOakPicture {
+  width:40%;
+  background-image:url("../../assets/img/happyOak.jpg");
+  background-size:cover;
+}
+
 #EichText {
   padding-left:1em;
   padding-top:1em;

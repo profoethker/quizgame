@@ -34,6 +34,8 @@ function loadRandomQuestion(){
         $( "#tipp" ).click(function() { 
             eichTippLoader();    
         });
+        $( "#MadOakPicture" ).attr("id", "EichPicture");
+        $( "#HappyOakPicture").attr("id", "EichPicture");
       }
     });
 }
@@ -92,10 +94,12 @@ function sendAnswer(questionID, answerID){
         if(data.correct == answerID){
            $( "#answer"+answerID ).addClass("rightAnswer");
            $( "#EichText" ).html("Richtig! </br> "+ data.info);
+           $( "#EichPicture").attr("id", "HappyOakPicture");
         }else{
            $( "#answer"+answerID ).addClass("wrongAnswer");
            $( "#answer"+data.correct ).addClass("rightAnswer");
            $( "#EichText" ).html("Leider Falsch! </br> "+ data.info);
+           $( "#EichPicture" ).attr("id", "MadOakPicture");
         }
         
         //Sprechblase mit erklärung anzeigen
@@ -103,7 +107,7 @@ function sendAnswer(questionID, answerID){
           
         $( "#nextQuestion" ).click(function() { 
             removeWrongRightIndicator();
-            loadRandomQuestion();    
+            loadRandomQuestion();
         });
       }
     });
