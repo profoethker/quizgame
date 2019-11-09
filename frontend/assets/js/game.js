@@ -10,11 +10,12 @@ $( document ).ready(function() {
 
 var currentQuestionId = -1;
 var alreadyTipped = false;
+var ip_address = '192.168.178.43:7000'
 
 function loadRandomQuestion(){
     $.ajax({
       type: 'GET',
-      url: "http://192.168.178.43:7000/api/randomQuestion/",
+      url: "http://"+ ip_address + "/api/randomQuestion/",
       async: false,
       headers: {"Access-Control-Allow-Origin": "*"},
       dataType: 'json',
@@ -40,7 +41,7 @@ function loadRandomQuestion(){
 function eichTippLoader(){
     $.ajax({
       type: 'POST',
-      url: "http://192.168.178.43:7000/api/tip/",
+      url: "http://"+ ip_address + "/api/tip/",
       data: JSON.stringify({currentQuestionId}),
       async: true,
       contentType: "application/json", 
