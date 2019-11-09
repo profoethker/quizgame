@@ -16,15 +16,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class BackendModulApplication {
 
-	 public WebMvcConfigurer corsConfigurer() {
-	        return new WebMvcConfigurer() {
-	            @Override
-	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/api/*").allowedOrigins("http://127.0.0.1:8000");
-	            }
-	        };
-	    }
-	
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH")
+						.allowedHeaders("Access-Control-Allow-Origin", "*");
+			}
+		};
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(BackendModulApplication.class, args);
 	}

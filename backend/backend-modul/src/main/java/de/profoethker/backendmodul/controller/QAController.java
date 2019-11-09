@@ -2,6 +2,7 @@ package de.profoethker.backendmodul.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ public class QAController {
 	// public QADao qaDao;
 
 	@GetMapping("/api/qa")
+	@CrossOrigin
 	public String getQuestionAndAnswer() {
 		System.out.println("Inside qa");
 		// List<QA> qaList = qaDao.findall();
@@ -38,6 +40,7 @@ public class QAController {
 	}
 
 	@RequestMapping(value = "/api/randomQuestion", produces="application/json")
+	@CrossOrigin
 	public String getRandomQuestionAndAnswer() {
 		System.out.println("Inside getRandomQuestion");
 		Gson gson = new Gson();
