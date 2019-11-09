@@ -77,12 +77,6 @@
   background-size:cover;
 }
 
-#MadEichPicture{
-  width:40%;
-  background-image:url("../../assets/img/madOak.png");
-  background-size:cover;
-}
-
 #EichText {
   padding-left:1em;
   padding-top:1em;
@@ -101,6 +95,7 @@
   background:#f1f1f1;
   height:100%;
   border-radius:.4em;
+  overflow-y:auto;
 }
 
 .speech-bubble:after {

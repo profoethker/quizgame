@@ -50,12 +50,13 @@ function eichTippLoader(){
           $( "#eichAnswerContainer" ).html(" ");
           if(alreadyTipped) return;
           alreadyTipped = true;
-          if(data.type == "50/50"){
+          if(data.type == "tip"){
+              if(data.tip.length == 0) $( "#EichText" ).html("Die Aufgabe ist so einfach, hier bekommst du noch keinen Tip.");
+              else $( "#EichText" ).html(data.tip);
+          }if(data.type == "50/50"){
              $( "#EichText" ).html("Ich habe dir die Anzhal der möglich Antworten halbiert. Ich hoffe es hilft dir.");
              $( "#aText" + data.wrong1 ).html( "" );
              $( "#aText" + data.wrong2 ).html( "" );
-          }if(data.type == "tip"){
-             $( "#EichText" ).html(data.tip);
           }if(data.type == "skip"){
              $( "#EichText" ).html("Ok, dann will ich mal nicht so sein. Ich gebe dir eine neue Frage.");
               
@@ -91,12 +92,10 @@ function sendAnswer(questionID, answerID){
         if(data.correct == answerID){
            $( "#answer"+answerID ).addClass("rightAnswer");
            $( "#EichText" ).html("Richtig! </br> "+ data.info);
-
         }else{
            $( "#answer"+answerID ).addClass("wrongAnswer");
            $( "#answer"+data.correct ).addClass("rightAnswer");
            $( "#EichText" ).html("Leider Falsch! </br> "+ data.info);
-
         }
         
         //Sprechblase mit erklärung anzeigen
