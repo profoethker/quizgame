@@ -1,6 +1,8 @@
 package de.profoethker.backendmodul.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -11,10 +13,11 @@ public class Score {
 
 	@JoinColumn(name = "username", table = "account")
 	private String username;
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "hibernate_sequence")
 	private Integer id;
-	
+
 	private Integer value;
 
 	public Integer getId() {
