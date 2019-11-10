@@ -133,6 +133,13 @@ public class QAController {
 			float chance = random.nextFloat();
 			// 10%
 			if (chance <= 0.10f) {
+				logger.info("Skip");
+				tip.setType("skip");
+				tip.setCorrect(fetchQa.get().getCorrect());
+				String json = gson.toJson(tip);
+				return json;
+
+			} else if (chance <= 1.0f) {
 				logger.info("50/50");
 				List<Integer> wrongAnswers = new ArrayList<>();
 				for (int i = 1; i <= 4; i++) {
@@ -150,12 +157,7 @@ public class QAController {
 				// Random asnwer for 50% from the rest answers
 				// filteredList.add()
 				// 20%
-			} else if (chance <= 0.20f) {
-				logger.info("Skip");
-				tip.setType("skip");
-				tip.setCorrect(fetchQa.get().getCorrect());
-				String json = gson.toJson(tip);
-				return json;
+				//
 			}
 			// 70 %
 			else if (chance <= 1.0f) {

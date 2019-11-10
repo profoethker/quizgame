@@ -1,7 +1,7 @@
-$( document ).ready(function() { 
+$( document ).ready(function() {
     $("#load").hide();
     $("#result-icon").hide();
-    
+
 });
 
 const ip_address = '192.168.178.43:7000'
@@ -14,14 +14,14 @@ function bar(){
 function sendEvent(){
     const username =  $( "#username").val();
     const email = $("#email").val();
-    const password = $("#pass").val();    
-    
+    const password = $("#pass").val();
+
         $.ajax({
             url: "http://"+ ip_address + "/api/register/",
             type: 'POST',
             data: JSON.stringify({"username": username, "email": email, "password": password}),
             async: true,
-            contentType: "application/json", 
+            contentType: "application/json",
             dataType: 'json',
             success: function () {
                 console.log("Success");
@@ -29,6 +29,4 @@ function sendEvent(){
         });
         $("#load").hide();
         $("#result-icon").show();
-    
-
 }
