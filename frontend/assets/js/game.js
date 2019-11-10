@@ -11,8 +11,8 @@ $( document ).ready(function() {
 var currentPersonalQuestionId = -1;
 var currentQuestionId = -1;
 var alreadyTipped = false;
-var ip_address = '192.168.178.43:7000'
-//var ip_address = 'localhost:7000'
+//var ip_address = '192.168.178.43:7000'
+var ip_address = 'localhost:7000'
 var highscore = 0
 var multiplier = 1
 var correct_streak = 0
