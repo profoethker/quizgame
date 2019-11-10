@@ -54,13 +54,24 @@ function personalQuestionLoader(){
       dataType: 'json',
       success: function (data) {
         $( "#EichText" ).html("Es wäre nett, wenn du mir kurz eine Frage beantwortest: </br>" + data.question);
-        $( "#eichAnswerContainer" ).html("<div id='p1' class='eichAnswer'><p class='eichAnswerText'>"+data.answer1+"</p></div><div id='p2' class='eichAnswer'><p class='eichAnswerText'>"+data.answer2+"</p></div><div id='p3' class='eichAnswer'><p class='eichAnswerText'>"+data.answer3+"</p></div><div id='p4' class='eichAnswer'><p class='eichAnswerText'>"+data.answer4+"</p></div>");
-        currentPersonalQuestionId = data.id
+        if(data.answer1){
+            $( "#eichAnswerContainer" ).html("<div id='p1' class='eichAnswer'><p class='eichAnswerText'>"+data.answer1+"</p></div>");
+            $( "#p1" ).click(function() { uploadPersonalData( 1);});
+        }
+        if(data.answer2){
+            $( "#eichAnswerContainer" ).append("<div id='p2' class='eichAnswer'><p class='eichAnswerText'>"+data.answer2+"</p></div>");
+            $( "#p2" ).click(function() { uploadPersonalData( 2);});
+        }
+        if(data.answer3){
+            $( "#eichAnswerContainer" ).append("<div id='p3' class='eichAnswer'><p class='eichAnswerText'>"+data.answer3+"</p></div>");
+            $( "#p3" ).click(function() { uploadPersonalData( 3);});
+        }   
+        if(data.answer4){
+            $( "#eichAnswerContainer" ).append("<div id='p4' class='eichAnswer'><p class='eichAnswerText'>"+data.answer4+"</p></div>");
+            $( "#p4" ).click(function() { uploadPersonalData( 4);});
+        }
 
-        $( "#p1" ).click(function() { uploadPersonalData( 1);});
-        $( "#p2" ).click(function() { uploadPersonalData( 2);});
-        $( "#p3" ).click(function() { uploadPersonalData( 3);});
-        $( "#p4" ).click(function() { uploadPersonalData( 4);});
+        currentPersonalQuestionId = data.id
           
       }
     });    
