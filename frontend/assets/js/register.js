@@ -1,14 +1,13 @@
 $( document ).ready(function() {
     $("#load").hide();
     $("#result-icon").hide();
-
 });
 
 const ip_address = '192.168.178.43:7000'
 
 function bar(){
     $("#load").show();
-    setTimeout(sendEvent, 3000);
+    setTimeout(sendEvent, 1000);
 }
 
 function sendEvent(){
@@ -29,4 +28,9 @@ function sendEvent(){
         });
         $("#load").hide();
         $("#result-icon").show();
+        setTimeout(browserforward, 1000);
+
+}
+function browserforward(){
+    document.location.replace('game.html');
 }
