@@ -47,9 +47,9 @@ public class QAController {
 
 		if (!qaList.isEmpty()) {
 			QA randomQa = getRandomQa(qaList);
-			System.out.println(randomQa.getQuestion());
+			logger.debug(randomQa.getQuestion());
 		} else {
-			System.out.println("No data in DB!");
+			logger.warn("No data in DB!");
 		}
 
 		return "Etwas";
