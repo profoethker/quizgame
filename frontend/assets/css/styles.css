@@ -104,18 +104,18 @@
   overflow-y:auto;
 }
 
-.speech-bubble:after {
+#SpeechBubbleContainer:after {
   content:'';
   position:absolute;
   left:0;
-  top:50%;
+  top:70%;
   width:0;
   height:0;
   border:40px solid transparent;
   border-right-color:#f1f1f1;
   border-left:0;
   border-top:0;
-  margin-top:-20px;
+  margin-top:-200px;
   margin-left:-40px;
 }
 
@@ -123,6 +123,7 @@
   height:45vh;
   width:40%;
   margin-left:7vw;
+  position: relative;
 }
 
 #frage {
